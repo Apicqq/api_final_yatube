@@ -30,33 +30,53 @@ Yatube - новая, перспективная и быстрорастущая 
 ## Как запустить проект:
 
 Клонировать репозиторий и перейти в него, используя командную строку:
-> git clone https://github.com/Apicqq/api_final_yatube.git
+```
+git clone https://github.com/Apicqq/api_final_yatube.git
+```
 
-> cd api_final_yatube
+```
+cd api_final_yatube
+```
 
 Создать и активировать виртуальное окружение:
-> python -m venv venv
 
-> source venv/scripts/activate
+```
+python -m venv venv
+```
+
+```
+source venv/scripts/activate
+```
 
 Установить зависимости из файла requirements.txt:
-> python -m pip install --upgrade pip
 
->pip install -r requirements.txt
+```
+python -m pip install --upgrade pip
+```
+
+```
+pip install -r requirements.txt
+```
 
 Выполнить миграции:
-> python manage.py migrate
+
+```
+python manage.py migrate
+```
 
 Создать суперпользователя (в текущей реализации создание пользователей через API недоступно):
-
-> python manage createsuperuser
+```
+python manage createsuperuser
+```
 
 Запустить проект:
-> python manage.py runserver
+```
+python manage.py runserver
+```
 ---
 ## Документация
 
-После запуска проекта статичная документация с указанием всех реализованных эндпоинтов будет доступна по адресу: http://127.0.0.1:8000/redoc/.
+После запуска проекта статичная документация с указанием всех реализованных эндпоинтов будет доступна по адресу: http://127.0.0.1:8000/redoc/
 
 ### API-токен
 
