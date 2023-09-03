@@ -91,7 +91,7 @@ STATICFILES_DIRS = ((BASE_DIR / 'static/'),)
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
-        'api.permissions.AuthorizedPermission',
+        'api.permissions.AuthorAccessPermission',
         'rest_framework.permissions.IsAuthenticatedOrReadOnly',
 
     ],
