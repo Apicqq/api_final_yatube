@@ -1,4 +1,3 @@
-from django_filters.rest_framework import DjangoFilterBackend
 from django.shortcuts import get_object_or_404
 from rest_framework import filters, mixins, viewsets
 from rest_framework.pagination import LimitOffsetPagination
@@ -15,7 +14,6 @@ class PostViewSet(viewsets.ModelViewSet):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
     pagination_class = LimitOffsetPagination
-    filter_backends = (DjangoFilterBackend,)
 
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)
@@ -44,7 +42,7 @@ class FollowViewSet(mixins.CreateModelMixin,
                     mixins.ListModelMixin,
                     viewsets.GenericViewSet):
     serializer_class = FollowSerializer
-    filter_backends = (filters.SearchFilter, DjangoFilterBackend)
+    filter_backends = (filters.SearchFilter,)
     permission_classes = (AuthenticatedPermission,)
     filterset_fields = ('user__username', 'following__username')
     search_fields = ('user__username', 'following__username')
