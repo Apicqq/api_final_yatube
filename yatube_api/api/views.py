@@ -44,7 +44,6 @@ class FollowViewSet(mixins.CreateModelMixin,
     serializer_class = FollowSerializer
     filter_backends = (filters.SearchFilter,)
     permission_classes = (AuthenticatedPermission,)
-    filterset_fields = ('user__username', 'following__username')
     search_fields = ('user__username', 'following__username')
 
     def get_queryset(self):
