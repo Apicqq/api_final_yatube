@@ -9,15 +9,13 @@ class AuthorizedPermission(permissions.BasePermission):
                 or obj.author == request.user)
 
 
-class ReadOnlyPermission(permissions.BasePermission):
+class AuthenticatedPermission(permissions.BasePermission):
     message = ('Неаутентифицированным пользователям контент'
-               'доступен только для чтения.')
+               'недоступен.')
 
     def has_permission(self, request, view):
-        return request.method in permissions.SAFE_METHODS
+        return request.user.is_authenticated
 
-
-class PermissionMixin:
-    def get_permissions(self):
-        return ((ReadOnlyPermission(),) if self.action in ('retrieve', 'list')
-                else super().get_permissions())
+# Я понимаю, что это костыль, но без него не срастается. Во вьюсете
+# Фоллоу прописан кверисет через request.user, если этот пермишен не вводить,
+# то тест падает с ошибкой, что у AnonymousUser нет метода following

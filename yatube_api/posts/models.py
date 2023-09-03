@@ -24,6 +24,9 @@ class Post(models.Model):
     def __str__(self):
         return self.text[settings.MAX_TEXT_LENGTH]
 
+    class Meta:
+        ordering = ('pub_date',)
+
 
 class Comment(models.Model):
     author = models.ForeignKey(
@@ -61,6 +64,10 @@ class Follow(models.Model):
             models.UniqueConstraint(
                 fields=['user', 'following'],
                 name='unique_follower'
+            ),
+            models.CheckConstraint(
+                name='%(app_label)s_%(class)s_prevent_self_follow',
+                check=models.Q(user=models.F('user'))
             )
         ]
 

@@ -3,15 +3,14 @@ from rest_framework import routers
 
 from api.views import CommentViewSet, GroupViewSet, PostViewSet, FollowViewSet
 
-router = routers.DefaultRouter()
-router.register(r'posts/(?P<post_id>\d+?)/comments',
-                CommentViewSet, 'comments')
-router.register('groups', GroupViewSet, 'groups')
-router.register('posts', PostViewSet, 'posts')
-router.register('follow', FollowViewSet, 'follows')
+yatube_router_v1 = routers.DefaultRouter()
+yatube_router_v1.register(r'posts/(?P<post_id>\d+?)/comments',
+                          CommentViewSet, 'comments')
+yatube_router_v1.register('groups', GroupViewSet, 'groups')
+yatube_router_v1.register('posts', PostViewSet, 'posts')
+yatube_router_v1.register('follow', FollowViewSet, 'follows')
 
 urlpatterns = [
-    path('v1/', include(router.urls)),
-    path('v1/', include('djoser.urls')),
+    path('v1/', include(yatube_router_v1.urls)),
     path('v1/', include('djoser.urls.jwt'))
 ]
