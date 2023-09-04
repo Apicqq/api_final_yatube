@@ -1,7 +1,7 @@
 from rest_framework import permissions
 
 
-class AuthorOrReadOnly(permissions.BasePermission):
+class IsAuthorOrReadOnly(permissions.BasePermission):
     message = 'Редактирование чужого контента запрещено.'
 
     def has_object_permission(self, request, view, obj):
