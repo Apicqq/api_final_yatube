@@ -30,47 +30,47 @@ Yatube - новая, перспективная и быстрорастущая 
 ## Как запустить проект:
 
 Клонировать репозиторий и перейти в него, используя командную строку:
-```
+```bash
 git clone https://github.com/Apicqq/api_final_yatube.git
 ```
 
-```
+```bash
 cd api_final_yatube
 ```
 
 Создать и активировать виртуальное окружение:
 
-```
+```bash
 python -m venv venv
 ```
 
-```
+```bash
 source venv/scripts/activate
 ```
 
 Установить зависимости из файла requirements.txt:
 
-```
+```bash
 python -m pip install --upgrade pip
 ```
 
-```
+```bash
 pip install -r requirements.txt
 ```
 
 Выполнить миграции:
 
-```
+```bash
 python manage.py migrate
 ```
 
 Создать суперпользователя (в текущей реализации создание пользователей через API недоступно):
-```
+```bash
 python manage createsuperuser
 ```
 
 Запустить проект:
-```
+```bash
 python manage.py runserver
 ```
 ---
